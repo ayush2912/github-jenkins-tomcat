@@ -16,6 +16,9 @@ steps{
         sh 'mvn package'
       }
 }
+ stage(deploy){
+steps{
+}
 
 }
 }
