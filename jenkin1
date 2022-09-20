@@ -18,9 +18,9 @@ steps{
 }
  stage(deploy){
 steps{
- sh 'sudo docker kill $(sudo docker ps -q)'
-sh 'sudo docker rm $(sudo docker ps -a -q)'
-sh ' sudo docker rmi $(sudo docker images -a -q)'
+ sh 'sudo docker kill all '
+sh 'sudo docker rm all'
+sh ' sudo docker rmi all'
  sh 'sudo docker build -t ayush3:$BUILD_NUMBER .'
 sh' sudo docker container run -itd --name ayush$BUILD_NUMBER -p 8082:8080 ayush3:$BUILD_NUMBER '
 
