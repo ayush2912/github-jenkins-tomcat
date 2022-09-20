@@ -17,10 +17,15 @@ steps{
       }
 }
  stage(deploy){
+enviroment {
+  listd="docker ps -q"
+  listf="docker ps -a -q"
+liste="docker images -a -q"
+}
 steps{
- sh 'sudo docker kill all '
-sh 'sudo docker rm all'
-sh ' sudo docker rmi all'
+ sh 'docker kill $( listd) '
+sh 'sudo docker rm $(listf)'
+sh ' docker rmi $(liste)'
  sh 'sudo docker build -t ayush3:$BUILD_NUMBER .'
 sh' sudo docker container run -itd --name ayush$BUILD_NUMBER -p 8082:8080 ayush3:$BUILD_NUMBER '
 
