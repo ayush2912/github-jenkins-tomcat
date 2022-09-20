@@ -1,5 +1,10 @@
 pipeline{
 agent any
+    enviroment {
+                    listd="docker ps -q"
+                    listf="docker ps -a -q"
+                    liste="docker images -a -q"
+}
 stages{
  stage(compile){
     steps{
@@ -17,11 +22,7 @@ steps{
       }
 }
  stage(deploy){
-enviroment {
-  listd="docker ps -q"
-  listf="docker ps -a -q"
-liste="docker images -a -q"
-}
+     
 steps{
  sh 'docker kill $( listd) '
 sh 'sudo docker rm $(listf)'
