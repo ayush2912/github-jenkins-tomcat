@@ -1,7 +1,7 @@
 pipeline{
 agent any
  environment {
-                    listd="docker ps -q"
+                    listd="docker ps --q"
                     listf="docker ps -a -q"
                     liste="docker images -a -q"
 }
