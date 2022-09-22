@@ -23,8 +23,8 @@ steps{
 steps{
 sh 'sudo docker system prune -af'
 
- sh 'sudo docker build -t Webimage:$BUILD_NUMBER .'
-sh 'sudo docker container run -itd --name Webserver:$BUILD_NUMBER -p 8081:8080 Webimage:$BUILD_NUMBER'
+ sh 'sudo docker build -t image:$BUILD_NUMBER  . '
+sh 'sudo docker container run -itd --name Webserver:$BUILD_NUMBER -p 8081:8080 image:$BUILD_NUMBER'
 
 
 }
