@@ -1,5 +1,8 @@
 pipeline{
 agent any
+parameters{
+		 string(name:'port', defaultValue:'8181', description:'Tomcat WebApp Port')
+	}
  
 stages{
  stage(compile){
@@ -21,10 +24,16 @@ steps{
  
      
 steps{
-sh 'sudo docker system prune -af'
+echo 'Deleting Old Docker container...'
+					sh "docker rm -f \$(docker ps -aq -f name=webserver$BUILD_NUMBER)"
+					echo 'Old Docker container Deleted successfully'
 
  sh 'sudo docker build -t image:$BUILD_NUMBER  . '
-sh 'sudo docker container run -itd --name webserver$BUILD_NUMBER -p 8081:8080 image:$BUILD_NUMBER'
+
+echo 'Starting Docker Container'
+					sh "docker run --name webserver$BUILD_NUMBER -d -p ${params.port}:8080 image:$BUILD_NUMBER "
+					echo "Docker Container started successfully at port : ${params.port}"
+
 
 
 }
