@@ -1,10 +1,6 @@
 pipeline{
 agent any
- environment {
-                    listd="docker ps -q"
-                    listf="docker ps -a -q"
-                    liste="docker images -a -q"
-}
+ 
 stages{
  stage(compile){
     steps{
@@ -25,9 +21,7 @@ steps{
  
      
 steps{
- sh "docker kill $listd"
-sh "sudo docker rm ${listf}"
-sh " docker rmi ${liste}"
+sh 'docker system prune ayush3:$BUILD_NUMBER'
  sh 'sudo docker build -t ayush3:$BUILD_NUMBER .'
 sh' sudo docker container run -itd --name ayush$BUILD_NUMBER -p 8082:8080 ayush3:$BUILD_NUMBER '
 
