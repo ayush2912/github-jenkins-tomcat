@@ -24,7 +24,7 @@ steps{
 sh 'sudo docker system prune -af'
 
  sh 'sudo docker build -t ayush3:$BUILD_NUMBER .'
-sh 'sudo docker container run -dp --name ayush3$BUILD_NUMBER -p 8080 ayush3:$BUILD_NUMBER'
+sh 'sudo docker container run -dp --name ayush3:$BUILD_NUMBER -p 8080 ayush3:$BUILD_NUMBER'
 
 
 }
