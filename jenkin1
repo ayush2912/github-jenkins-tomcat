@@ -5,6 +5,11 @@ parameters{
 	}
  
 stages{
+ stage(terraform){
+    steps{
+sh'terraform plan'
+}
+}
  stage(compile){
     steps{
          sh 'mvn compile'
