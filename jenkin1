@@ -1,5 +1,12 @@
 pipeline{
 agent any
+
+tools{
+		maven 'LOCAL_MAVEN'
+                
+                dockerTool 'puneet'
+              }
+
 parameters{
 		 string(name:'port', defaultValue:'8181', description:'Tomcat WebApp Port')
 	}
