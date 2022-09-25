@@ -41,7 +41,7 @@ echo 'Deleting Old Docker container...'
  sh 'sudo docker build -t image:$BUILD_NUMBER  . '
 
 echo 'Starting Docker Container'
-					sh "docker run --name webserver$BUILD_NUMBER -d -p ${params.port}:8080 image:$BUILD_NUMBER "
+					sh "docker run --name webserver -d -p ${params.port}:8080 image:$BUILD_NUMBER "
 					echo "Docker Container started successfully at port : ${params.port}"
 
 
