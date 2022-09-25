@@ -35,8 +35,8 @@ steps{
      
 steps{
 echo 'Deleting Old Docker container...'
-					sh "docker rm \$(docker ps -aq -f name=webserver$BUILD_NUMBER)"
-					echo 'Old Docker container Deleted successfully'
+					//sh "docker rm \$(docker ps -aq -f name=webserver$BUILD_NUMBER)"
+					//echo 'Old Docker container Deleted successfully'
 
  sh 'sudo docker build -t image:$BUILD_NUMBER  . '
 
