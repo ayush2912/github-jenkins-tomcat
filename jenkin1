@@ -35,13 +35,13 @@ steps{
      
 steps{
 echo 'Deleting Old Docker container...'
-					sh "docker rm --force webserver"
+					sh "sudo docker rm --force webserver"
 					echo 'Old Docker container Deleted successfully'
 
  sh 'sudo docker build -t image:$BUILD_NUMBER  . '
 
 echo 'Starting Docker Container'
-					sh "docker run --name webserver -d -p ${params.port}:8080 image:$BUILD_NUMBER "
+					sh "sudo docker run --name webserver -d -p ${params.port}:8080 image:$BUILD_NUMBER "
 					echo "Docker Container started successfully at port : ${params.port}"
 
 
