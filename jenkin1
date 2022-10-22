@@ -1,15 +1,18 @@
 pipeline{
 agent any
 tools {
-  dockerTool 'puneet'
   maven 'test'
+  dockerTool 'Docker'
 }
 
 parameters{
 		 string(name:'port', defaultValue:'8181', description:'Tomcat WebApp Port')
 	}
  
-stages{
+stages{tools {
+  maven 'test'
+  dockerTool 'Docker'
+}
  stage(terraform){
     steps{
 sh'terraform plan'
